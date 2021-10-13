@@ -1,7 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { Box, Card, Container, createStyles, makeStyles, TextField, Typography } from '@material-ui/core';
-import { useQuery } from 'react-query';
-import { getCarMakers, MarkersResponse } from './CarMarkersHook';
+import { createStyles, makeStyles, TextField, Typography } from '@material-ui/core';
 import { Autocomplete } from '@mui/material';
 import { CarModels } from '../car-models/CarModels';
 import axios from 'axios';

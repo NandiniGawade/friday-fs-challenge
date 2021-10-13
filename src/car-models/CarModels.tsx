@@ -2,10 +2,7 @@ import { createStyles, makeStyles, TextField } from "@material-ui/core";
 import { Autocomplete} from "@mui/material";
 import axios from "axios";
 import { FC, useEffect, useState } from "react";
-import { useQuery } from "react-query";
 import { useHistory } from "react-router-dom";
-import { getCarModels } from "../car-list/CarMarkersHook";
-import { VehicleDetails } from "../vehicle-details/VehicleDetails";
 
 const useStyles = makeStyles(() =>
   createStyles({

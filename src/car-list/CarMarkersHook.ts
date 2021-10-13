@@ -13,7 +13,6 @@ export const getCarMakers = async (): Promise<any> => {
 };
 
 export const getCarModels = async (model: any): Promise<MarkersResponse> => {
-  console.log(model)
   const { data } = await axios.get(MODELS_ENDPOINT, {
     params: {
       make: model

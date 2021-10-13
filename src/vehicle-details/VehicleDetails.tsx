@@ -1,12 +1,11 @@
 import { Box, createStyles, makeStyles, TextField, Typography } from "@material-ui/core";
-import { Autocomplete} from "@mui/material";
 import axios from "axios";
 import { FC, useEffect, useState } from "react";
-import { useQuery } from "react-query";
-import { useLocation } from "react-router-dom";
-import { getCarModels } from "../car-list/CarMarkersHook";
+import { useHistory, useLocation } from "react-router-dom";
 import { ListHeader } from "./ListHeader";
 import { VehicleList } from "./VehicleList";
+import { ArrowBack } from '@material-ui/icons';
+
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -15,11 +14,22 @@ const useStyles = makeStyles((theme) =>
       overflowY: 'scroll',
     },
     title: {
-      fontSize: 20,
-      paddingLeft: theme.spacing(1.15),
+      marginLeft: '40%',
+      fontWeight: 'bolder',
+      fontSize: 21
     },
     tableHeight: {
       height: 550
+    },
+    headerTitle: {
+      display: 'flex',
+      height: 40,
+      marginTop: 10
+    },
+    back: {
+      fontSize: 30,
+      marginLeft: 10,
+      cursor: 'pointer'
     }
   })
 );
@@ -28,6 +38,7 @@ const VehicleDetails: FC<any> = ({make, model}) => {
     const location = useLocation();
     const vehicle = (location.state as any);
     const [vehicleList, setVehicleList] = useState([]);
+    const history = useHistory();
 
     useEffect(() => {
       const fetchData = async () => {
@@ -48,8 +59,17 @@ const VehicleDetails: FC<any> = ({make, model}) => {
       };
       fetchData()
     }, []);
+    
+    const redirectMainPage = () => {
+      history.push('/')
+    };
+
     return (
         <div className="container">
+          <Box className={classes.headerTitle}>
+              <Typography><ArrowBack className={classes.back} onClick={() => redirectMainPage()}/></Typography>
+              <Typography className={classes.title}>List of cars of {vehicle.model}</Typography>
+          </Box>
           <ListHeader />
           <Box className={classes.root}>
             
