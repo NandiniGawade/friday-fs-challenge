@@ -54,7 +54,7 @@ const VehicleDetails: FC<any> = ({make, model}) => {
           })
           setVehicleList(data.data);
         } catch (error) {
-          console.log("true");
+          alert("Something went wrong!!! Please restart the server.")
         }
       };
       fetchData()

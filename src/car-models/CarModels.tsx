@@ -34,7 +34,7 @@ const CarModels: FC<any> = ({model}) => {
             })
             setcarModels(data.data)
           } catch (error) {
-            console.log("true");
+            alert("Something went wrong!!! Please restart the server.")
           }
         };
         fetchData()

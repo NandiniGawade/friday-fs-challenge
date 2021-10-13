@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { createStyles, makeStyles, TextField, Typography } from '@material-ui/core';
-import { Autocomplete } from '@mui/material';
+import { Alert, AlertTitle, Autocomplete } from '@mui/material';
 import { CarModels } from '../car-models/CarModels';
 import axios from 'axios';
 
@@ -47,6 +47,7 @@ const CarMarkers: FC<{}> = () => {
         const response = await axios(MARKERS_ENDPOINT);
         setcarsMaker(response.data)
       } catch (error) {
+        alert("Something went wrong!!! Please restart the server.")
         console.log("true");
       }
     };
@@ -81,6 +82,10 @@ const CarMarkers: FC<{}> = () => {
           </div>
         }
       </div>
+      {<Alert severity="error">
+        <AlertTitle>Error</AlertTitle>
+        This is an error alert — <strong>check it out!</strong>
+      </Alert>}
     </div>
   );
 };
